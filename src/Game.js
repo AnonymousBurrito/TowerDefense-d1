@@ -1,6 +1,7 @@
 import './main.css';
 import Phaser, {Game} from 'phaser';
 import MapOne from './scenes/mapOne'
+import Menu from './scenes/menu';
 
 const canvas = document.getElementById('game');
 const config = {
@@ -16,6 +17,7 @@ const config = {
     }
   },
   scene: [
+    Menu,
     MapOne
   ]
 };
