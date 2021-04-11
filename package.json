@@ -2,7 +2,7 @@
   "name": "towerdefense-d1",
   "version": "0.0.1",
   "description": "tower defense game",
-  "main": "./src/Game.js",
+  "main": "./src/game.js",
   "scripts": {
     "start": "webpack serve --mode development --entry ./src/game.js",
     "build": "webpack --mode production --entry ./src/game.js --output-path ./dist/game.js",
