@@ -19,12 +19,8 @@ class Menu extends Scene {
     }
 
     create(){
-       this.start = this.add.image(450, 150, 'start-btn')
-       this.start.setInteractive();
-       this.start.on('pointerdown', () => { console.log('fuck you') })
-                 .on('pointerover', () => { this.start.setStyle({fill:'#ff0'})} )
-
-       this.add.image(450, 250, 'exit-btn')
+        //got textures changing on hover working next add callback functions
+        this.add.existing( new BtnSprite(this, 450, 250, 'exit-btn', 'start-btn'))
     }
     
     onStart(){
@@ -35,3 +31,16 @@ class Menu extends Scene {
 }
 
 export default Menu;
+
+/** 
+        this.start = this.add.sprite(450, 150, 'start-btn')
+       const startTxt = this.add.text(0,0, 'Start', { fill: '#000000'})
+       startTxt.setOrigin(0.5)
+       startTxt.setX(this.start.getCenter().x)
+       startTxt.setY(this.start.getCenter().y)
+
+       this.start.setInteractive();
+       this.start.on('pointerdown', () => { console.log('fuck you') })
+                 .on('pointerover', () => { console.log('im hovering')} )
+
+*/
