@@ -1,4 +1,4 @@
-import Phaser, {Scene} from 'phaser';
+import {Scene} from 'phaser';
 import BtnSprite from '../modules/Button';
 
 
@@ -8,20 +8,33 @@ class Menu extends Scene {
 
     constructor(){
         super('main-menu');
-        let start;
     }
 
     preload(){
-        this.cameras.main.setBackgroundColor('#99CDF1')
-        this.load.image('start-btn', 'assets/Menu/PNG/blue_button00.png');
-        this.load.image('exit-btn', 'assets/Menu/PNG/blue_button01.png')
-        this.load.image('background', 'assets/Maps/mapOne.png');
+        this.load.image('background', 'assets/Menu/menu_bg.jpg');
+        this.load.image('hover-btn', 'assets/Menu/PNG/green_button00.png');
+        this.load.image('static-btn', 'assets/Menu/PNG/green_button01.png')
     }
 
     create(){
+        //background
+        const background =this.add.image(0, 0, 'background').setOrigin(0,0)
+        background.setScale(0.5)
+        //Center (x, y) 
+        const centerX = this.cameras.main.centerX
+        const centeryY = this.cameras.main.centerY
+
         //got textures changing on hover working next add callback functions
-        this.add.existing( new BtnSprite(this, 450, 250, 'exit-btn', 'start-btn'))
-    }
+        const play = this.add.existing( new BtnSprite(this, centerX - 200 , centeryY + 50, 'Start','static-btn', 'hover-btn', this.onStart ))
+        const quit = this.add.existing( new BtnSprite(this, centerX + 200 , centeryY + 50,  'Quit','static-btn', 'hover-btn', this.onStart ))
+        
+        const banner = this.add.text(centerX - 200 , centeryY - 100, 'Tower Defense IX')
+                           .setStyle({
+                               font:'6em Georgia',
+                               fill:'Green'
+                           })
+        
+     }
     
     onStart(){
         console.log('you pressed start')
@@ -31,16 +44,3 @@ class Menu extends Scene {
 }
 
 export default Menu;
-
-/** 
-        this.start = this.add.sprite(450, 150, 'start-btn')
-       const startTxt = this.add.text(0,0, 'Start', { fill: '#000000'})
-       startTxt.setOrigin(0.5)
-       startTxt.setX(this.start.getCenter().x)
-       startTxt.setY(this.start.getCenter().y)
-
-       this.start.setInteractive();
-       this.start.on('pointerdown', () => { console.log('fuck you') })
-                 .on('pointerover', () => { console.log('im hovering')} )
-
-*/
