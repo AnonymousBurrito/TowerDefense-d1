@@ -4,15 +4,15 @@ import Phaser, {Scene} from 'phaser';
 class MapOne extends Scene {
 
     constructor(){
-        super('map-one');
+        super('mapOne');
     }
 
     preload(){
-        this.load.image('background', 'assets/Maps/mapOne.png');
+        this.load.image('map', 'assets/Maps/mapOne.png');
     }
 
     create(){
-        this.add.image(330,200, 'background').setScale(1);
+        this.add.image(330,200, 'map').setScale(1);
     }
 }
 

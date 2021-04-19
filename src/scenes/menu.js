@@ -1,5 +1,6 @@
 import {Scene} from 'phaser';
 import BtnSprite from '../modules/Button';
+import MapMenu from './mapSelect';
 
 
 class Menu extends Scene {
@@ -7,13 +8,13 @@ class Menu extends Scene {
 
 
     constructor(){
-        super('main-menu');
+        super('menu');
     }
 
     preload(){
         this.load.image('background', 'assets/Menu/menu_bg.jpg');
         this.load.image('hover-btn', 'assets/Menu/PNG/green_button00.png');
-        this.load.image('static-btn', 'assets/Menu/PNG/green_button01.png')
+        this.load.image('static-btn', 'assets/Menu/PNG/green_button01.png');
     }
 
     create(){
@@ -26,7 +27,7 @@ class Menu extends Scene {
 
         //got textures changing on hover working next add callback functions
         const play = this.add.existing( new BtnSprite(this, centerX - 200 , centeryY + 50, 'Start','static-btn', 'hover-btn', this.onStart ))
-        const quit = this.add.existing( new BtnSprite(this, centerX + 200 , centeryY + 50,  'Quit','static-btn', 'hover-btn', this.onStart ))
+        const quit = this.add.existing( new BtnSprite(this, centerX + 200 , centeryY + 50,  'Quit','static-btn', 'hover-btn', this.quit ))
         
         const banner = this.add.text(centerX - 200 , centeryY - 100, 'Tower Defense IX')
                            .setStyle({
@@ -34,13 +35,20 @@ class Menu extends Scene {
                                fill:'Green'
                            })
         
+        
      }
     
-    onStart(){
-        console.log('you pressed start')
+    onStart =() => {
+        const clicked = new Audio('assets/Menu/Bonus/rollover1.ogg')
+        clicked.play();
+        this.scene.switch('mapSelect')
+        
     }
 
-
+    // won't need quit button for browser game
+    quit = () => {
+        window.close();
+    }
 }
 
 export default Menu;
