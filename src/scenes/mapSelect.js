@@ -13,6 +13,8 @@ export default class MapMenu extends Phaser.Scene{
         //button images
         this.load.image('hover', 'assets/Menu/PNG/green_button00.png');
         this.load.image('static', 'assets/Menu/PNG/green_button01.png');
+        this.load.image('left', 'assets/Menu/PNG/green_sliderLeft.png');
+        this.load.image('right', 'assets/Menu/PNG/green_sliderRight.png');
         //maps
         this.load.image('map','assets/Maps/mapOne.png');
     }
@@ -27,9 +29,11 @@ export default class MapMenu extends Phaser.Scene{
 
         //Btn 
         const backBtn = this.add.existing(new BtnSprite(this, 100, 50, 'back', 'static', 'hover', this.goBack) )
+        //left right btns
+        const leftBtn = this.add.existing(new BtnSprite(this, 50, centerY, '<', 'left','left', null ))
+        const rightBtn = this.add.existing(new BtnSprite(this, 850, centerY, '>', 'right','right', null ))
         // map adjust or create new class for map sprites 
         const map1 = this.add.existing(new BtnSprite(this, centerX, centerY,'','map','map', this.toNextMap) )
-        
         map1.setScale(0.4)
     }
 
@@ -42,5 +46,10 @@ export default class MapMenu extends Phaser.Scene{
     toNextMap = () => {
         this.scene.switch('mapOne')
     }
+
+
+
+    
+
 
 }
