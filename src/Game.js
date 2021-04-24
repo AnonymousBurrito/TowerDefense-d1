@@ -7,7 +7,7 @@ import MapMenu from './scenes/mapSelect';
 const canvas = document.getElementById('game');
 const config = {
   type: Phaser.WEBGL,
-  width: 900,
+  width: 1200,
   height: 400,
   canvas,
   physics: {

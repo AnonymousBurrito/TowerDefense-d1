@@ -16,7 +16,7 @@ export default class MapMenu extends Phaser.Scene{
         this.load.image('left', 'assets/Menu/PNG/green_sliderLeft.png');
         this.load.image('right', 'assets/Menu/PNG/green_sliderRight.png');
         //maps
-        this.load.image('map','assets/Maps/mapOne.png');
+        this.load.image('map','assets/Maps/Map_Rock.png');
     }
 
     create(){

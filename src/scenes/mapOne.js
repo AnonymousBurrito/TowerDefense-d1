@@ -12,7 +12,7 @@ class MapOne extends Scene {
     }
 
     create(){
-        this.add.image(330,200, 'map').setScale(1);
+        this.add.image(0,0, 'map').setOrigin(0,0).setScale(1)
     }
 }
 
